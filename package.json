@@ -1,0 +1,30 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "The content below is an example project proposal / requirements document. Replace the text below the lines marked \"__TODO__\" with details specific to your project. Remove the \"TODO\" lines.",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon app.mjs"
+  },
+  "author": "Kevin",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "express-ws": "^5.0.2",
+    "hbs": "^4.2.0",
+    "http": "^0.0.1-security",
+    "mongoose": "^8.0.0",
+    "passport": "^0.6.0",
+    "passport-local-mongoose": "^8.0.0",
+    "socket.io": "^4.7.2",
+    "url": "^0.11.3",
+    "wbs": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
