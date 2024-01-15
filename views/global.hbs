@@ -1,0 +1,41 @@
+<h2>Global Chat</h2>
+<ul id="messages"></ul>
+<form id="form" action="">
+    <input id="message"/><button>Send</button>
+</form>
+<div id = 'username'>{{username}}</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    document.getElementById('username').style.display="none";//hide this div since just for username purposes
+    const socket = io();//connect
+
+    function appendMessage(msg) {//add to list elements could make diff later
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(msg.user + ': ' + msg.content));
+        document.getElementById('messages').appendChild(li);
+    }
+
+    socket.on('chat history', function (history) {
+        history.forEach(appendMessage);
+    });
+
+    socket.on('chat message', function (msg) {
+        appendMessage(msg);
+    });//listening
+
+
+    document.getElementById('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const username = document.getElementById('username').textContent;//way to get usernames from dom
+        //have to wait
+        const messageInput = document.getElementById('message');
+        const messageContent = messageInput.value.trim();
+        if (messageContent !== '') {
+
+            socket.emit('chat message', { user: username, content: messageContent });
+            messageInput.value = '';
+        }
+    });
+</script>
